@@ -30,7 +30,7 @@ version=${2:-${version}}
 instanceName=some-${2:-${imageTag##*/}}
 
 #### ---- instance local data on the host ----
-local_docker_data=~/docker-data/${PACKAGE}/data
+local_docker_data=~/data-docker/${PACKAGE}/data
 mkdir -p ${local_docker_data}
 
 #### ----- RUN -------
