@@ -4,7 +4,6 @@
 
 ##Components:
 - ref: https://github.com/davidshen84/docker-cassandra-learn
-- ref: https://github.com/davidshen84/docker-jupyter
 
 ## Pull the image from Docker Repository
 
@@ -24,7 +23,6 @@ http://localhost:8888/?token=c8de56fa... :: /Users/you/notebooks
 Or you can paste just the token value into the password field on this page.
 
 Cookies are required for authenticated access to notebooks.
-
 
 ## Connect to cassandra Docker
 host/port=> 0.0.0.0:18888 
