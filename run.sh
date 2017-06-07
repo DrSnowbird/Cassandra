@@ -4,14 +4,13 @@
 #### ---- Mandatory: Change those ----
 ##################################################
 
-PACKAGE=scikit
-docker_volume_data1=/notebook
-docker_volume_data2=/data
+PACKAGE=cassandra
+docker_volume_data=/var/lib/cassandra
 docker_port1=8888
 local_docker_port1=18888
 
 
-version=1.0.0
+version=latest
 
 ##################################################
 #### ---- Mostly, you don't need change below ----
@@ -23,17 +22,16 @@ echo "e.g."
 echo "  ${0} openkbs/${PACKAGE} 1.0.0"
 
 # Reference: https://docs.docker.com/engine/userguide/containers/dockerimages/
-imageTag=${1:-openkbs/${PACKAGE}}
+#imageTag=${1:-openkbs/${PACKAGE}}
+imageTag=${PACKAGE}
 version=${2:-${version}}
 
 #instanceName=my-${2:-${imageTag%/*}}_$RANDOM
-instanceName=my-${2:-${imageTag##*/}}
+instanceName=some-${2:-${imageTag##*/}}
 
 #### ---- instance local data on the host ----
-local_docker_data1=~/docker-data/${PACKAGE}/notebook
-local_docker_data2=~/docker-data/${PACKAGE}/data
-mkdir -p ${local_docker_data1}
-mkdir -p ${local_docker_data2}
+local_docker_data=~/docker-data/${PACKAGE}/data
+mkdir -p ${local_docker_data}
 
 #### ----- RUN -------
 echo "To run: for example"
@@ -42,14 +40,14 @@ echo "---------------------------------------------"
 echo "---- Starting a Container for ${imageTag}"
 echo "---------------------------------------------"
 #docker run --rm -P -d --name $instanceName $imageTag
+#docker run --name some-cassandra -v /my/own/datadir:/var/lib/cassandra -d cassandra:tag
 docker run \
     --detach \
     --name=${instanceName} \
-    --publish ${local_docker_port1}:${docker_port1} \
-    --volume=${local_docker_data1}:${docker_volume_data1} \
-    --volume=${local_docker_data2}:${docker_volume_data2} \
+    --volume=${local_docker_data}:${docker_volume_data} \
     ${imageTag}:${version} 
     
+#    --publish ${local_docker_port1}:${docker_port1} \
 
 if [ ! "$version" == "" ]; then
     #docker run --rm -P -d -t --name ${instanceName} -v ${docker_data}:${docker_volume_data} ${imageTag}:${version}
