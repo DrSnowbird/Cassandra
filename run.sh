@@ -30,8 +30,8 @@ version=${2:-${version}}
 instanceName=my-${2:-${imageTag##*/}}
 
 #### ---- instance local data on the host ----
-local_docker_data1=~/docker-data/${PACKAGE}/notebook
-local_docker_data2=~/docker-data/${PACKAGE}/data
+local_docker_data1=~/data-docker/${PACKAGE}/notebook
+local_docker_data2=~/data-docker/${PACKAGE}/data
 mkdir -p ${local_docker_data1}
 mkdir -p ${local_docker_data2}
 
