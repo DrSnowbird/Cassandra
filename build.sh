@@ -3,13 +3,13 @@
 # Reference: 
 # - https://docs.docker.com/engine/userguide/containers/dockerimages/
 # - https://github.com/dockerfile/java/blob/master/oracle-java8/Dockerfile
-# - https://docs.docker.com/engine/examples/scikit_service/
+# - https://docs.docker.com/engine/examples/cassandra_service/
 
 # example:
-#  docker build -t openkbs/scikit:1.0.0 -t openkbs/scikit:latest .
+#  docker build -t openkbs/cassandra:1.0.0 -t openkbs/cassandra:latest .
 
-imageTag=openkbs/scikit
-version=1.0.0
+imageTag=openkbs/cassandra
+version=latest
 
 if [ ! "$version" == "" ]; then
     docker build -t ${imageTag}:$version -t ${imageTag}:latest .

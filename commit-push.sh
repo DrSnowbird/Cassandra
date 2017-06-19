@@ -10,7 +10,7 @@ echo "   docker login"
 echo
 
 comment=${1:-Update JVM}
-imageTag=${2:-openkbs/scikit}
+imageTag=${2:-openkbs/cassandra}
 imageVersion=1.0.1
 
 docker ps -a
